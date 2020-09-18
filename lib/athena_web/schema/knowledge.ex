@@ -1,5 +1,6 @@
 defmodule AthenaWeb.Schema.Knowledge do
   use Absinthe.Schema.Notation
+  use Absinthe.Relay.Schema.Notation, :classic
 
   alias AthenaWeb.Resolvers
 
@@ -9,7 +10,13 @@ defmodule AthenaWeb.Schema.Knowledge do
     field :description, :string
   end
 
+  connection node_type: :knowledge
+
   object :knowledge_queries do
+    @desc "List Knowledge"
+    connection field :knowledges, node_type: :knowledge do
+      resolve &Resolvers.KnowledgeResolver.list_knowledge/3
+    end
 
   end
 
