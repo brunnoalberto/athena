@@ -50,6 +50,8 @@ defmodule Athena.Accounts do
 
   """
   def create_user(attrs \\ %{}) do
+    IO.inspect attrs, label: "Atributos"
+
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()

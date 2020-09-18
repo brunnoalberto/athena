@@ -23,7 +23,14 @@ defmodule AthenaWeb.Schema.User do
   end
 
   object :user_mutations do
-
+    @desc "Create User"
+    field :create_user, :user do
+      arg(:name, non_null(:string))
+      arg(:email, non_null(:string))
+      arg(:password, non_null(:string))
+      arg(:role_id, non_null(:id))
+      resolve &Resolvers.UserResolver.create_user/3
+    end
   end
 
 end
