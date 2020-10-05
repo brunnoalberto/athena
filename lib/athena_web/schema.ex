@@ -7,18 +7,15 @@ defmodule AthenaWeb.Schema do
   import_types(AthenaWeb.Schema.Role)
   import_types(AthenaWeb.Schema.User)
   import_types(AthenaWeb.Schema.Tag)
-  import_types(AthenaWeb.Schema.Knowledge)
 
   query do
     import_fields :role_queries
     import_fields :user_queries
-    import_fields :knowledge_queries
   end
 
   mutation do
     import_fields :role_mutations
     import_fields :user_mutations
-    import_fields :knowledge_mutations
   end
 
   def context(ctx) do
